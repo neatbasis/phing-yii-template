@@ -469,7 +469,7 @@ code. This indicates potential refactorings.-->
 Measures the size of the project using
 [phploc](http://sebastianbergmann.github.com/phploc/) and generates
 statistics. -->
-	<target name="phploc" description="Generate phploc.csv using phploc" depends="init, setup-phing-phploc">
+	<target name="phploc" description="Generate phploc.csv using phploc" depends="init">
 		<!-- Suffixes should be the same as included in the
          src.php filesets -->
 		<phploc reportType="csv" reportName="phploc" reportDirectory="${project.logdir}" suffixes="php,module,inc,install,profile,test" countTests="true">
@@ -477,9 +477,12 @@ statistics. -->
 		</phploc>
 	</target>
 
-	<!-- #### Setup Phing phploc integration -->
+	<!-- #### Setup Phing phploc integration
+	
+Include setup-phing-phploc in phploc depends if phploc task is not included in your phing version -->
 	<target name="setup-phing-phploc" depends="init">
 		<!-- Clone the project -->
+		<mkdir dir="${project.toolsdir}/phing-phploc" />
 		<phingcall target="setup-git-repo">
 			<property name="repo.dir" value="${project.toolsdir}/phing-phploc" />
 			<property name="repo.url" value="${phing.phploc.repository.url}" />
