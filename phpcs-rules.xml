@@ -20,9 +20,6 @@
 	<exclude-pattern>*/protected/messages/*</exclude-pattern>
 	<exclude-pattern>*/protected/data/*</exclude-pattern>
 
-
-
-
 	<rule ref="Zend">
 		<exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed" />
 		<exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine" />
