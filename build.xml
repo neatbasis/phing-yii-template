@@ -1043,8 +1043,7 @@ To use this task you mush have a version of Phrocco with support for XML
 parsing installed. The task is primarily for template developers. -->
 	<target name="phrocco" depends="clean">
 		<!-- Determine current branch -->
-		<exec command="git status --branch --short" outputProperty="phrocco.code.status" />
-		<php expression="array_shift(explode('...', trim('${phrocco.code.status}', '# '), 2))" returnProperty="phrocco.code.branch" />
+		<exec command="git rev-parse --abbrev-ref HEAD" outputProperty="phrocco.code.branch" />
 
 		<!-- Generate documentation in the root build directory -->
 		<exec command="phrocco -i . -o . -l xml" passthru="true" checkreturn="true" />
