@@ -1049,9 +1049,6 @@ parsing installed. The task is primarily for template developers. -->
 		<exec command="phrocco -i . -o . -l xml" passthru="true" checkreturn="true" />
 		<!-- Checkout the GitHub pages branch -->
 		<exec command="git checkout gh-pages" passthru="true" checkreturn="true" />
-		<!-- We use the documentation for build.xml and root file so rename
-          it to index.html -->
-		<move file="build.html" tofile="index.html" overwrite="true" haltonerror="true" />
 
 		<property name="phrocco.commit.mode" value="" />
 		<!-- If the local documentation branch is ahead then we have other
