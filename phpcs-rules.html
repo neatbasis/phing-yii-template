@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>phpcs-rules.xml</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="layout.css" />
+  <style>
+    /*--------------------- Layout and Typography ----------------------------*/
+body { font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif; font-size: 15px; line-height: 22px; color: #252519; margin: 0; padding: 0;
+}
+a { color: #261a3b;
+} a:visited { color: #261a3b; }
+p { margin: 0 0 15px 0;
+}
+h1, h2, h3, h4, h5, h6 { margin: 40px 0 15px 0;
+} h3, h4, h5, h6 { margin-top: 20px; }
+#container { position: relative;
+}
+#background { position: fixed; top: 0; left: 575px; right: 0; bottom: 0; background: #f5f5ff; border-left: 1px solid #e5e5ee; z-index: -1;
+}
+#jump_to, #jump_page { background: white; -webkit-box-shadow: 0 0 25px #777; -moz-box-shadow: 0 0 25px #777; -webkit-border-bottom-left-radius: 5px; -moz-border-radius-bottomleft: 5px; font: 10px Arial; text-transform: uppercase; cursor: pointer; text-align: left;
+}
+#jump_to, #jump_wrapper { position: fixed; right: 0; top: 0; padding: 5px 10px;
+} #jump_wrapper { padding: 0; display: none; } #jump_to:hover #jump_wrapper { display: block; left:15px; } #jump_page { padding: 5px 0 3px; margin: 0 0 25px 25px; overflow:hidden; -moz-column-count: 5; -moz-column-gap: 12px; -webkit-column-count: 6; -webkit-column-gap: 12px; column-count: 5; column-gap: 12px; background:#333; width:100%; } #jump_page .jump_group {margin:0;padding:0;margin-bottom:10px;} #jump_page .jump_group li {list-style:none;} #jump_page h5 {color:white;text-transform:none;font-size:110%;margin:8px 0 0 10px;} #jump_page .source { display: block; padding: 2px 12px; text-decoration: none; min-width:180px; text-align:left; text-transform:none; font-size:10px; color:#FFF; text-shadow:1px 1px 1px #333; } #jump_page .source:hover { background: #f5f5ff; } #jump_page .source:first-child { }
+table td { border: 0; outline: 0;
+} td.docs, th.docs { max-width: 450px; min-width: 450px; min-height: 5px; padding: 10px 25px 1px 50px; overflow-x: hidden; vertical-align: top; text-align: left; } .docs pre { margin: 15px 0 15px; padding-left: 15px; } .docs p tt, .docs p code { background: #f8f8ff; border: 1px solid #dedede; font-size: 12px; padding: 0 0.2em; } .pilwrap { position: relative; } .pilcrow { font: 12px Arial; text-decoration: none; color: #454545; position: absolute; top: 3px; left: -20px; padding: 1px 2px; opacity: 0; -webkit-transition: opacity 0.2s linear; } td.docs:hover .pilcrow { opacity: 1; } td.code, th.code { padding: 14px 15px 16px 25px; width: 100%; vertical-align: top; background: #f5f5ff; border-left: 1px solid #e5e5ee; } pre, tt, code { font-size: 12px; line-height: 18px; font-family: Monaco, Consolas, "Lucida Console", monospace; margin: 0; padding: 0; } /*---------------------- Syntax Highlighting -----------------------------*/
+td.linenos { background-color: #f0f0f0; padding-right: 10px; }
+span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
+body .hll { background-color: #ffffcc }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #954121 } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #808080 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0040D0 } /* Generic.Traceback */
+body .kc { color: #954121 } /* Keyword.Constant */
+body .kd { color: #954121; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #954121; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #954121 } /* Keyword.Pseudo */
+body .kr { color: #954121; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #219161 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #954121 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #954121; font-weight: bold } /* Name.Tag */
+body .nv { color: #19469D } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sb { color: #219161 } /* Literal.String.Backtick */
+body .sc { color: #219161 } /* Literal.String.Char */
+body .sd { color: #219161; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #219161 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #219161 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #954121 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #219161 } /* Literal.String.Single */
+body .ss { color: #19469D } /* Literal.String.Symbol */
+body .bp { color: #954121 } /* Name.Builtin.Pseudo */
+body .vc { color: #19469D } /* Name.Variable.Class */
+body .vg { color: #19469D } /* Name.Variable.Global */
+body .vi { color: #19469D } /* Name.Variable.Instance */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */ /********** PHP Comment Additions ********/
+td.docs .docparam {color:#DB251A;font-weight:bold;}
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+          <div id="jump_to">
+        Jump To &hellip;
+        <div id="jump_wrapper">
+          <div id="jump_page">
+                                          <a class="source" href="./build.html">
+                              build.xml              </a>
+                                          <a class="source" href="./phpcs-rules.html">
+                              phpcs-rules.xml              </a>
+                      </div>
+        </div>
+      </div>
+        <table cellpadding="0" cellspacing="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1>
+              phpcs-rules.xml            </h1>
+          </th>
+          <th class="code">
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr id="section-0">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-0">&#182;</a>
+              </div>
+              
+            </td>
+            <td class="code">
+              <div class="highlight"><pre><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></pre></div>            </td>
+          </tr>
+                  <tr id="section-1">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <p>PHP<em>Codesniffer config file. @link http://pear.php.net/package/PHP</em>CodeSniffer</p>
+            </td>
+            <td class="code">
+              <div class="highlight"><pre><span class="nt">&lt;ruleset</span> <span class="na">name=</span><span class="s">&quot;Custom Standard&quot;</span><span class="nt">&gt;</span></pre></div>            </td>
+          </tr>
+                  <tr id="section-2">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Exclude sniff rule. @see /usr/lib/php/pear/PHP/CodeSniffer/Standards/PSR1/Sniffs/Classes/ClassDeclarationSniff.php 
+        @see /usr/lib/php/pear/PHP/CodeSniffer/Standards/PSR1/Sniffs/Files/SideEffectsSniff.php</p>
+            </td>
+            <td class="code">
+              <div class="highlight"><pre> <span class="nt">&lt;description&gt;</span>My custom Zend coding standard.<span class="nt">&lt;/description&gt;</span>
+
+ <span class="nt">&lt;extensions&gt;</span>php<span class="nt">&lt;/extensions&gt;</span></pre></div>            </td>
+          </tr>
+                  <tr id="section-3">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Exclude file and directory.</p>
+            </td>
+            <td class="code">
+              <div class="highlight"><pre> <span class="nt">&lt;exclude-pattern&gt;</span>*/yii/*<span class="nt">&lt;/exclude-pattern&gt;</span>
+ <span class="nt">&lt;exclude-pattern&gt;</span>*/.git/*<span class="nt">&lt;/exclude-pattern&gt;</span>
+ <span class="nt">&lt;exclude-pattern&gt;</span>*/images/*<span class="nt">&lt;/exclude-pattern&gt;</span>
+ <span class="nt">&lt;exclude-pattern&gt;</span>*/js/*<span class="nt">&lt;/exclude-pattern&gt;</span>
+ <span class="nt">&lt;exclude-pattern&gt;</span>*/css/*<span class="nt">&lt;/exclude-pattern&gt;</span>
+ <span class="nt">&lt;exclude-pattern&gt;</span>*/assets/*<span class="nt">&lt;/exclude-pattern&gt;</span>
+ <span class="nt">&lt;exclude-pattern&gt;</span>*/protected/runtime/*<span class="nt">&lt;/exclude-pattern&gt;</span>
+ <span class="nt">&lt;exclude-pattern&gt;</span>*/protected/extensions/*<span class="nt">&lt;/exclude-pattern&gt;</span>
+ <span class="nt">&lt;exclude-pattern&gt;</span>*/protected/vendor/*<span class="nt">&lt;/exclude-pattern&gt;</span>
+ <span class="nt">&lt;exclude-pattern&gt;</span>*/protected/messages/*<span class="nt">&lt;/exclude-pattern&gt;</span>
+ <span class="nt">&lt;exclude-pattern&gt;</span>*/protected/data/*<span class="nt">&lt;/exclude-pattern&gt;</span>
+
+ <span class="nt">&lt;rule</span> <span class="na">ref=</span><span class="s">&quot;Zend&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;exclude</span> <span class="na">name=</span><span class="s">&quot;Generic.WhiteSpace.DisallowTabIndent.TabsUsed&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;exclude</span> <span class="na">name=</span><span class="s">&quot;Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine&quot;</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;/rule&gt;</span>
+
+<span class="nt">&lt;/ruleset&gt;</span>
+</pre></div></pre></div>            </td>
+          </tr>
+              </tbody>
+    </table>
+  </div>
+</body>
+</html>
