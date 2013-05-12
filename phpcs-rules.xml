@@ -25,6 +25,7 @@
 
 	<rule ref="Zend">
 		<exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed" />
+		<exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine" />
 	</rule>
 
 </ruleset>

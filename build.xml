@@ -569,11 +569,18 @@ Consequently `coder-review-d6/7` and not `phpcs` is used for the main targets.
 		<exec executable="phpcs" logoutput="true">
 			<arg line="--report=checkstyle" />
 			<arg line="--report-file=${project.logdir}/checkstyle-codesniffer.xml" />
-			<arg line="--standard=${project.toolsdir}/phpcs-rules.xml" />
+			<arg line="--standard=${project.builddir}/phpcs-rules.xml" />
 			<arg line="${project.basedir}" />
 		</exec>
     </target>
-
+	<target name="test-db"
+	          description="Run all unit tests"
+	          depends="init, setup-phing-yiic">
+	    <!-- Enable simpletest module. If using Drupal 6 the module will be
+	         downloaded as well. -->
+		<yiic command="install" action="testdb" />
+		<yiic command="install" action="migrate" />
+	</target>
   <!-- ### Run simpletests
 
 Execution of this target can be skipped by setting the
@@ -1066,7 +1073,7 @@ Configuration of which installation profile and database to use in done in
              classpath="${project.toolsdir}/phing-yiic" />
 
     <!-- Run yiic from the project protected directory -->
-    <property name="yiic.dir" value="${project.builddir}/protected"/>
+    <property name="yiic.dir" value="${project.basedir}/protected"/>
   </target>
 	
   <!-- ### Setup Phing Yiic integration -->
