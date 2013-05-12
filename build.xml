@@ -1048,7 +1048,14 @@ parsing installed. The task is primarily for template developers. -->
 		<!-- Generate documentation in the root build directory -->
 		<exec command="phrocco -i . -o . -l xml" passthru="true" checkreturn="true" />
 		<!-- Checkout the GitHub pages branch -->
+		<!-- Temporarily rename docs-->
+		<move file="build.html" tofile="build.html.new" overwrite="true" haltonerror="true" />
+		<move file="phpcs-rules.html" tofile="phpcs-rules.html.new" overwrite="true" haltonerror="true" />
 		<exec command="git checkout gh-pages" passthru="true" checkreturn="true" />
+		
+		<!-- Replace old docs with new docs -->
+		<move file="build.html.new" tofile="build.html" overwrite="true" haltonerror="true" />
+		<move file="phpcs-rules.html.new" tofile="phpcs-rules.html" overwrite="true" haltonerror="true" />
 
 		<property name="phrocco.commit.mode" value="" />
 		<!-- If the local documentation branch is ahead then we have other
